@@ -46,7 +46,8 @@ export async function lookupParticipant(
   const selfId = matches[0].id as string;
 
   const pairingRows = await sql`
-    select pr.celebrant_id, p.name as celebrant_name, p.birthday as celebrant_birthday
+    select pr.celebrant_id, p.name as celebrant_name,
+      to_char(p.birthday, 'YYYY-MM-DD') as celebrant_birthday
     from pairings pr
     join participants p on p.id = pr.celebrant_id
     where pr.assigner_id = ${selfId}

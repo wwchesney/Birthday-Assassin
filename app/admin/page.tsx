@@ -29,7 +29,13 @@ export default async function AdminPage() {
   }
 
   const [participantRows, pairingCountResult] = await Promise.all([
-    sql`select id, name, phone, birthday, created_at from participants order by created_at asc`,
+    sql`
+      select id, name, phone,
+        to_char(birthday, 'YYYY-MM-DD') as birthday,
+        to_char(created_at, 'YYYY-MM-DD') as created_at
+      from participants
+      order by participants.created_at asc
+    `,
     sql`select count(*)::int as count from pairings`,
   ]);
   const participants = participantRows as unknown as Participant[];
@@ -90,7 +96,7 @@ export default async function AdminPage() {
                       {formatDate(p.birthday)}
                     </td>
                     <td className="py-2 pr-4 text-zinc-600 dark:text-zinc-400">
-                      {formatDate(p.created_at.slice(0, 10))}
+                      {formatDate(p.created_at)}
                     </td>
                     <td className="py-2 pr-0 text-right">
                       <form action={removeParticipant}>
