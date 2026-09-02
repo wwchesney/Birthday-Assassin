@@ -1,10 +1,30 @@
-import { neon } from "@neondatabase/serverless";
+import { neon, type NeonQueryFunction } from "@neondatabase/serverless";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL is not set");
+type Sql = NeonQueryFunction<false, false>;
+
+let client: Sql | undefined;
+
+function getClient(): Sql {
+  if (!client) {
+    if (!process.env.DATABASE_URL) {
+      throw new Error("DATABASE_URL is not set");
+    }
+    client = neon(process.env.DATABASE_URL);
+  }
+  return client;
 }
 
-export const sql = neon(process.env.DATABASE_URL);
+// Lazily creates the Neon client on first real query instead of at module
+// import time, so `next build`'s page-data collection (which imports every
+// route) doesn't crash in environments where DATABASE_URL isn't set yet.
+export const sql: Sql = new Proxy((() => {}) as unknown as Sql, {
+  apply(_target, _thisArg, args) {
+    return (getClient() as (...a: unknown[]) => unknown)(...args);
+  },
+  get(_target, prop, receiver) {
+    return Reflect.get(getClient(), prop, receiver);
+  },
+});
 
 export type Participant = {
   id: string;
