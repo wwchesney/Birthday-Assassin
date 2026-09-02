@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { lookupParticipant, type LookupState } from "./actions";
 import GroupChatButton from "./GroupChatButton";
+import MissionBlock from "./MissionBlock";
 
 const initialState: LookupState = { status: "idle" };
 
@@ -89,6 +90,7 @@ export default function LookupForm() {
               {formatBirthday(state.celebrantBirthday)}
             </p>
           </div>
+          <MissionBlock celebrantName={state.celebrantName} />
           <GroupChatButton numbers={state.groupNumbers} />
         </div>
       )}
