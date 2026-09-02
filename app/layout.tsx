@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Birthday Pairing",
+  title: "Birthday Assassin",
   description: "Sign up, then find out who you're planning a birthday surprise for.",
 };
 

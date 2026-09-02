@@ -6,7 +6,7 @@ export const ADMIN_COOKIE_NAME = "admin_session";
 function expectedSessionToken(): string {
   const password = process.env.ADMIN_PASSWORD;
   if (!password) throw new Error("ADMIN_PASSWORD is not set");
-  return createHmac("sha256", password).update("birthday-planner-admin").digest("hex");
+  return createHmac("sha256", password).update("birthday-assassin-admin").digest("hex");
 }
 
 export function checkAdminPassword(candidate: string): boolean {

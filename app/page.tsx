@@ -6,7 +6,7 @@ export default function Home() {
       <main className="flex w-full max-w-sm flex-col items-center gap-8 text-center">
         <div className="space-y-2">
           <h1 className="text-3xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
-            🎉 Birthday Pairing
+            🎯 Birthday Assassin
           </h1>
           <p className="text-zinc-600 dark:text-zinc-400">
             Sign up, then check back to find out whose birthday you&apos;re
