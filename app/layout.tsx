@@ -23,7 +23,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <footer className="bg-zinc-50 py-4 text-center text-xs text-zinc-400 dark:bg-black dark:text-zinc-600">
+          © 2026 Chester Industries
+        </footer>
+      </body>
     </html>
   );
 }
