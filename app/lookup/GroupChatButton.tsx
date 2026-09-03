@@ -24,14 +24,14 @@ export default function GroupChatButton({ numbers }: { numbers: string[] }) {
     <div className="flex flex-col gap-2 sm:flex-row">
       <a
         href={smsHref}
-        className="flex h-11 flex-1 items-center justify-center rounded-full bg-zinc-950 px-5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+        className="flex h-11 flex-1 items-center justify-center rounded-full bg-blood px-5 text-sm font-medium text-ink transition-colors hover:bg-blood/90"
       >
-        Start the group chat
+        Assemble your conspirators
       </a>
       <button
         type="button"
         onClick={copyNumbers}
-        className="flex h-11 flex-1 items-center justify-center rounded-full border border-zinc-300 px-5 text-sm font-medium text-zinc-950 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-900"
+        className="flex h-11 flex-1 items-center justify-center rounded-full border border-rule px-5 text-sm font-medium text-ink transition-colors hover:bg-panel"
       >
         {copied ? "Copied!" : "Copy all numbers"}
       </button>

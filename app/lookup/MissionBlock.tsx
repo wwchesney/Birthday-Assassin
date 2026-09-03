@@ -1,19 +1,36 @@
+import type { ReactNode } from "react";
+
+function Section({
+  label,
+  children,
+}: {
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="mt-4 first:mt-0">
+      <p className="text-xs font-semibold tracking-widest text-ink-on-parchment/60 uppercase">
+        {label}
+      </p>
+      <div className="mt-1 border-t border-ink-on-parchment/15 pt-2">
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function MissionBlock({ celebrantName }: { celebrantName: string }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-left dark:border-zinc-800 dark:bg-zinc-950">
-      <h2 className="mb-2 text-lg font-medium text-zinc-950 dark:text-zinc-50">
-        Your Mission
-      </h2>
-      <p className="text-sm text-zinc-600 dark:text-zinc-400">
-        Set up and plan a birthday celebration for {celebrantName} — this can
-        be as little as finding a date and picking out a dessert.
-      </p>
-
-      <div className="mt-4">
-        <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-          Responsibilities:
+    <div className="text-left">
+      <Section label="Target">
+        <p className="text-sm text-ink-on-parchment">
+          Set up and plan a birthday celebration for {celebrantName} — this
+          can be as little as finding a date and picking out a dessert.
         </p>
-        <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-zinc-600 dark:text-zinc-400">
+      </Section>
+
+      <Section label="Objective">
+        <ul className="list-disc space-y-1 pl-5 text-sm text-ink-on-parchment">
           <li>
             Choose a date, working with the birthday person and others to
             accommodate the most people
@@ -24,23 +41,21 @@ export default function MissionBlock({ celebrantName }: { celebrantName: string 
             buy it or bake it
           </li>
         </ul>
-      </div>
+      </Section>
 
-      <div className="mt-4">
-        <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-          What you don&apos;t need to do:
+      <Section label="Constraints">
+        <p className="text-[11px] font-medium tracking-wide text-ink-on-parchment/50 uppercase">
+          Not required
         </p>
-        <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-zinc-600 dark:text-zinc-400">
+        <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-ink-on-parchment">
           <li>Buy presents</li>
           <li>Spend $100 on food — this should be fun, not a burden</li>
         </ul>
-      </div>
 
-      <div className="mt-4">
-        <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-          Do not:
+        <p className="mt-3 text-[11px] font-medium tracking-wide text-ink-on-parchment/50 uppercase">
+          Do not
         </p>
-        <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-zinc-600 dark:text-zinc-400">
+        <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-ink-on-parchment">
           <li>Forget to set this up entirely</li>
           <li>Spend 5 minutes planning (it&apos;s your friend — do something nice)</li>
           <li>Spend 10 hours planning (it&apos;s not that deep)</li>
@@ -50,7 +65,7 @@ export default function MissionBlock({ celebrantName }: { celebrantName: string 
             90%+ of the effort
           </li>
         </ul>
-      </div>
+      </Section>
     </div>
   );
 }

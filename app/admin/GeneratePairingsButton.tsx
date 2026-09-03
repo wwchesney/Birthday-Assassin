@@ -17,7 +17,7 @@ export default function GeneratePairingsButton({
 
   if (state.status === "success") {
     return (
-      <p className="text-sm font-medium text-green-700 dark:text-green-400">
+      <p className="text-sm font-medium text-green-400">
         {state.message}
       </p>
     );
@@ -28,13 +28,13 @@ export default function GeneratePairingsButton({
   if (alreadyExist && !confirming) {
     return (
       <div className="space-y-2">
-        <p className="text-sm text-amber-700 dark:text-amber-400">
+        <p className="text-sm text-amber-400">
           Pairings have already been generated.
         </p>
         <button
           type="button"
           onClick={() => setConfirming(true)}
-          className="h-10 rounded-full border border-amber-400 px-4 text-sm font-medium text-amber-700 transition-colors hover:bg-amber-50 dark:border-amber-600 dark:text-amber-400 dark:hover:bg-amber-950"
+          className="h-10 rounded-full border border-amber-600 px-4 text-sm font-medium text-amber-400 transition-colors hover:bg-amber-950/40"
         >
           Regenerate pairings…
         </button>
@@ -46,7 +46,7 @@ export default function GeneratePairingsButton({
     return (
       <form action={formAction} className="space-y-2">
         <input type="hidden" name="confirm" value="true" />
-        <p className="text-sm text-red-600 dark:text-red-400">
+        <p className="text-sm text-red-400">
           This replaces the existing pairings and can&apos;t be undone. Are you
           sure?
         </p>
@@ -54,7 +54,7 @@ export default function GeneratePairingsButton({
           <button
             type="submit"
             disabled={pending}
-            className="h-10 rounded-full bg-red-600 px-4 text-sm font-medium text-white transition-colors hover:bg-red-700 disabled:opacity-50"
+            className="h-10 rounded-full bg-blood px-4 text-sm font-medium text-ink transition-colors hover:bg-blood/90 disabled:opacity-50"
           >
             {pending ? "Regenerating…" : "Yes, regenerate"}
           </button>
@@ -62,7 +62,7 @@ export default function GeneratePairingsButton({
             type="button"
             onClick={() => setConfirming(false)}
             disabled={pending}
-            className="h-10 rounded-full border border-zinc-300 px-4 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-900"
+            className="h-10 rounded-full border border-rule px-4 text-sm font-medium text-ink transition-colors hover:bg-canvas"
           >
             Cancel
           </button>
@@ -74,17 +74,17 @@ export default function GeneratePairingsButton({
   return (
     <form action={formAction} className="space-y-2">
       {participantCount < 2 && (
-        <p className="text-sm text-zinc-500 dark:text-zinc-500">
+        <p className="text-sm text-muted">
           Need at least 2 people to generate pairings.
         </p>
       )}
       {state.status === "error" && (
-        <p className="text-sm text-red-600 dark:text-red-400">{state.message}</p>
+        <p className="text-sm text-red-400">{state.message}</p>
       )}
       <button
         type="submit"
         disabled={participantCount < 2 || pending}
-        className="h-10 rounded-full bg-zinc-950 px-5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+        className="h-10 rounded-full bg-blood px-5 text-sm font-medium text-ink transition-colors hover:bg-blood/90 disabled:opacity-50"
       >
         {pending ? "Generating…" : "Generate pairings"}
       </button>

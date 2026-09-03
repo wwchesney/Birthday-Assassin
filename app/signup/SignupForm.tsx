@@ -10,11 +10,11 @@ export default function SignupForm() {
 
   if (state.status === "success") {
     return (
-      <div className="w-full max-w-sm rounded-2xl border border-zinc-200 bg-white p-8 text-center dark:border-zinc-800 dark:bg-zinc-950">
-        <p className="text-lg font-medium text-zinc-950 dark:text-zinc-50">
-          You&apos;re in! 🎉
+      <div className="w-full max-w-sm rounded-2xl border border-rule bg-panel p-8 text-center">
+        <p className="font-heading text-2xl font-semibold text-ink">
+          You&apos;re in. Tell no one.
         </p>
-        <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+        <p className="mt-2 text-muted">
           Check back once everyone has joined and pairings have been
           generated.
         </p>
@@ -25,10 +25,10 @@ export default function SignupForm() {
   return (
     <form
       action={formAction}
-      className="w-full max-w-sm space-y-4 rounded-2xl border border-zinc-200 bg-white p-8 dark:border-zinc-800 dark:bg-zinc-950"
+      className="w-full max-w-sm space-y-4 rounded-2xl border border-rule bg-panel p-8"
     >
       <div className="space-y-1">
-        <label htmlFor="name" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+        <label htmlFor="name" className="text-sm font-medium text-muted">
           Name
         </label>
         <input
@@ -37,12 +37,12 @@ export default function SignupForm() {
           type="text"
           required
           autoComplete="name"
-          className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-zinc-950 focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+          className="w-full rounded-lg border border-rule bg-canvas px-3 py-2 text-ink focus:border-blood focus:outline-none"
         />
       </div>
 
       <div className="space-y-1">
-        <label htmlFor="phone" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+        <label htmlFor="phone" className="text-sm font-medium text-muted">
           Phone number
         </label>
         <input
@@ -52,12 +52,12 @@ export default function SignupForm() {
           required
           placeholder="603-555-1234"
           autoComplete="tel"
-          className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-zinc-950 focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+          className="w-full rounded-lg border border-rule bg-canvas px-3 py-2 text-ink placeholder:text-muted/60 focus:border-blood focus:outline-none"
         />
       </div>
 
       <div className="space-y-1">
-        <label htmlFor="birthday" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+        <label htmlFor="birthday" className="text-sm font-medium text-muted">
           Birthday
         </label>
         <input
@@ -65,18 +65,18 @@ export default function SignupForm() {
           name="birthday"
           type="date"
           required
-          className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-zinc-950 focus:border-zinc-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+          className="w-full rounded-lg border border-rule bg-canvas px-3 py-2 text-ink focus:border-blood focus:outline-none"
         />
       </div>
 
       {state.status === "error" && (
-        <p className="text-sm text-red-600 dark:text-red-400">{state.message}</p>
+        <p className="text-sm text-red-400">{state.message}</p>
       )}
 
       <button
         type="submit"
         disabled={pending}
-        className="flex h-11 w-full items-center justify-center rounded-full bg-zinc-950 px-5 font-medium text-white transition-colors hover:bg-zinc-800 disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+        className="flex h-11 w-full items-center justify-center rounded-full bg-blood px-5 font-medium text-ink transition-colors hover:bg-blood/90 disabled:opacity-50"
       >
         {pending ? "Signing up…" : "Sign up"}
       </button>
